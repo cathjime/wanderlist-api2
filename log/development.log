@@ -142,3 +142,425 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 49ms (Views: 30.3ms | ActiveRecord: 11.7ms | Allocations: 8727)
 
 
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5756683308664235640)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20201011185220)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.1ms)[0m  [1m[35mDROP TABLE "favorites"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20201011185220"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5756683308664235640)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5756683308664235640)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFavorites (20201011185220)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" bigserial primary key, "image" character varying, "name" character varying, "address" character varying, "city" character varying, "latitude" float, "longitude" float, "notes" text, "price" character varying, "rating" integer, "yelp_id" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201011185220"]]
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5756683308664235640)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for ::1 at 2020-10-11 15:31:02 -0400
+  [1m[35m (7.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 34ms (Views: 16.1ms | ActiveRecord: 13.7ms | Allocations: 8725)
+
+
+Started POST "/favorites" for ::1 at 2020-10-11 15:33:50 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media1.fl.yelpcdn.com/bphoto/32yNKzjDXawK7XoIdQ74ug/o.jpg", "name"=>"Sushirrito", "address"=>"226 Kearny St", "city"=>"San Francisco", "longitude"=>-122.403766215939, "latitude"=>37.7902241805415, "notes"=>"hello", "price"=>"$$", "rating"=>4, "yelp_id"=>"rMuLW1qVB-deU5NStYerWA", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media1.fl.yelpcdn.com/bphoto/32yNKzjDXawK7XoIdQ74ug/o.jpg", "name"=>"Sushirrito", "address"=>"226 Kearny St", "city"=>"San Francisco", "latitude"=>37.7902241805415, "longitude"=>-122.403766215939, "notes"=>"hello", "price"=>"$$", "rating"=>4, "yelp_id"=>"rMuLW1qVB-deU5NStYerWA", "user_id"=>1}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:9:in `create'
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:9:in `create'
+  [1m[36mFavorite Create (4.0ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media1.fl.yelpcdn.com/bphoto/32yNKzjDXawK7XoIdQ74ug/o.jpg"], ["name", "Sushirrito"], ["address", "226 Kearny St"], ["city", "San Francisco"], ["latitude", 37.7902241805415], ["longitude", -122.403766215939], ["notes", "hello"], ["price", "$$"], ["rating", 4], ["yelp_id", "rMuLW1qVB-deU5NStYerWA"], ["user_id", 1], ["created_at", "2020-10-11 19:33:50.883730"], ["updated_at", "2020-10-11 19:33:50.883730"]]
+  ↳ app/controllers/favorites_controller.rb:9:in `create'
+  [1m[35m (17.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:9:in `create'
+Completed 200 OK in 520ms (Views: 0.6ms | ActiveRecord: 88.5ms | Allocations: 16444)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:34:05 -0400
+Processing by FavoritesController#index as HTML
+  [1m[36mFavorite Load (13.9ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 16ms (Views: 2.3ms | ActiveRecord: 13.9ms | Allocations: 1110)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:49:50 -0400
+Processing by FavoritesController#index as HTML
+  [1m[36mFavorite Load (1.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 29ms (Views: 20.5ms | ActiveRecord: 1.7ms | Allocations: 10458)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:51:08 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 1.4ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:51:24 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (11.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 11.8ms | Allocations: 1083)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:51:25 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:57:26 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (3.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 10.2ms | ActiveRecord: 3.8ms | Allocations: 1189)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:57:40 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.6ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 1.6ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:57:51 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 2.8ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:06 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 1.8ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:07 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.1ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 1.1ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:09 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.6ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 2.6ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:27 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 102ms (Views: 100.9ms | ActiveRecord: 0.5ms | Allocations: 1069)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:49 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (3.1ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 3.1ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:55 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.0ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 1.0ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:58:59 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.6ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.6ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:59:25 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.7ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:59:40 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 1.5ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:59:42 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 1.2ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:59:44 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.4ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 15:59:55 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.2ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:00:07 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (16.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 18ms (Views: 1.9ms | ActiveRecord: 16.3ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:00:59 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:01:02 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.7ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:01:37 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 2.5ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:01:45 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1065)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:01:48 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (10.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 15ms (Views: 3.4ms | ActiveRecord: 10.8ms | Allocations: 1065)
+
+
+Started POST "/favorites" for ::1 at 2020-10-11 16:02:19 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media1.fl.yelpcdn.com/bphoto/GLvMxRbJGeeEs5PR6h7ucQ/o.jpg", "name"=>"Aria Korean Street Food", "address"=>"932 Larkin St", "city"=>"San Francisco", "longitude"=>-122.41795, "latitude"=>37.78655, "notes"=>"hello", "price"=>"$$", "rating"=>4, "yelp_id"=>"KA-P3d2NcbJy5SQN-vCzPA", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media1.fl.yelpcdn.com/bphoto/GLvMxRbJGeeEs5PR6h7ucQ/o.jpg", "name"=>"Aria Korean Street Food", "address"=>"932 Larkin St", "city"=>"San Francisco", "latitude"=>37.78655, "longitude"=>-122.41795, "notes"=>"hello", "price"=>"$$", "rating"=>4, "yelp_id"=>"KA-P3d2NcbJy5SQN-vCzPA", "user_id"=>1}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[36mFavorite Create (13.5ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media1.fl.yelpcdn.com/bphoto/GLvMxRbJGeeEs5PR6h7ucQ/o.jpg"], ["name", "Aria Korean Street Food"], ["address", "932 Larkin St"], ["city", "San Francisco"], ["latitude", 37.78655], ["longitude", -122.41795], ["notes", "hello"], ["price", "$$"], ["rating", 4], ["yelp_id", "KA-P3d2NcbJy5SQN-vCzPA"], ["user_id", 1], ["created_at", "2020-10-11 20:02:19.998714"], ["updated_at", "2020-10-11 20:02:19.998714"]]
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[35m (26.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+Completed 200 OK in 127ms (Views: 0.7ms | ActiveRecord: 46.3ms | Allocations: 12047)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:04:07 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.0ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 1.0ms | Allocations: 1293)
+
+
+Started POST "/favorites" for ::1 at 2020-10-11 16:04:29 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/fU5XCjC7N9nlZkvDb1TAuA/o.jpg", "name"=>"Starbucks", "address"=>"44 Montgomery St", "city"=>"San Francisco", "longitude"=>-122.402008, "latitude"=>37.789614, "notes"=>"hello", "price"=>"$", "rating"=>3.5, "yelp_id"=>"o21s8f-8zwqX0nlnN_2icA", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/fU5XCjC7N9nlZkvDb1TAuA/o.jpg", "name"=>"Starbucks", "address"=>"44 Montgomery St", "city"=>"San Francisco", "latitude"=>37.789614, "longitude"=>-122.402008, "notes"=>"hello", "price"=>"$", "rating"=>3.5, "yelp_id"=>"o21s8f-8zwqX0nlnN_2icA", "user_id"=>1}}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[36mFavorite Create (0.5ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media3.fl.yelpcdn.com/bphoto/fU5XCjC7N9nlZkvDb1TAuA/o.jpg"], ["name", "Starbucks"], ["address", "44 Montgomery St"], ["city", "San Francisco"], ["latitude", 37.789614], ["longitude", -122.402008], ["notes", "hello"], ["price", "$"], ["rating", 3], ["yelp_id", "o21s8f-8zwqX0nlnN_2icA"], ["user_id", 1], ["created_at", "2020-10-11 20:04:29.537159"], ["updated_at", "2020-10-11 20:04:29.537159"]]
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 4.3ms | Allocations: 4157)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:04:31 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.7ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:05:07 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.6ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.6ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:05:15 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:07:15 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.1ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 36ms (Views: 26.4ms | ActiveRecord: 1.1ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:13:21 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.0ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 1.0ms | Allocations: 1633)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:17:23 -0400
+Started GET "/favorites" for ::1 at 2020-10-11 16:17:23 -0400
+Started GET "/favorites" for ::1 at 2020-10-11 16:17:23 -0400
+Started GET "/favorites" for ::1 at 2020-10-11 16:17:23 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 1.4ms | Allocations: 1616)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:17:23 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 2.4ms | Allocations: 1606)
+
+
+Processing by FavoritesController#index as */*
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (76.9ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 80ms (Views: 3.0ms | ActiveRecord: 76.9ms | Allocations: 1642)
+
+
+  [1m[36mFavorite Load (117.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 123ms (Views: 4.6ms | ActiveRecord: 117.8ms | Allocations: 3887)
+
+
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 2.4ms | Allocations: 1633)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:18:06 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.0ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 2.0ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:18:25 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (27.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 36ms (Views: 8.6ms | ActiveRecord: 27.2ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:18:43 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (16.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 110ms (Views: 92.8ms | ActiveRecord: 16.7ms | Allocations: 1524)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:18:46 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (58.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 66ms (Views: 5.5ms | ActiveRecord: 58.7ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:19:10 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (14.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 2.3ms | ActiveRecord: 14.5ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:19:18 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.9ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 2.9ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:19:21 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (26.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 32ms (Views: 4.7ms | ActiveRecord: 26.7ms | Allocations: 1521)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:19:27 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (19.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 25ms (Views: 4.7ms | ActiveRecord: 19.7ms | Allocations: 1521)
+
+
+Started POST "/favorites" for ::1 at 2020-10-11 16:19:46 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media4.fl.yelpcdn.com/bphoto/RmfcnwXBfmIt3LiQnj1hhA/o.jpg", "name"=>"Tommy's Joynt", "address"=>"1101 Geary Blvd", "city"=>"San Francisco", "longitude"=>-122.421814, "latitude"=>37.785547, "notes"=>"hello", "price"=>"$$", "rating"=>4, "yelp_id"=>"0YPcBWiU-8t2kGe-DOhW5g", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media4.fl.yelpcdn.com/bphoto/RmfcnwXBfmIt3LiQnj1hhA/o.jpg", "name"=>"Tommy's Joynt", "address"=>"1101 Geary Blvd", "city"=>"San Francisco", "latitude"=>37.785547, "longitude"=>-122.421814, "notes"=>"hello", "price"=>"$$", "rating"=>4, "yelp_id"=>"0YPcBWiU-8t2kGe-DOhW5g", "user_id"=>1}}
+  [1m[35m (3.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[36mFavorite Create (3.2ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media4.fl.yelpcdn.com/bphoto/RmfcnwXBfmIt3LiQnj1hhA/o.jpg"], ["name", "Tommy's Joynt"], ["address", "1101 Geary Blvd"], ["city", "San Francisco"], ["latitude", 37.785547], ["longitude", -122.421814], ["notes", "hello"], ["price", "$$"], ["rating", 4], ["yelp_id", "0YPcBWiU-8t2kGe-DOhW5g"], ["user_id", 1], ["created_at", "2020-10-11 20:19:46.895688"], ["updated_at", "2020-10-11 20:19:46.895688"]]
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:13:in `create'
+Completed 200 OK in 38ms (Views: 0.5ms | ActiveRecord: 16.3ms | Allocations: 4187)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:19:50 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (1.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.5ms | Allocations: 1750)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:23:21 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (15.2ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 22ms (Views: 6.8ms | ActiveRecord: 15.2ms | Allocations: 1750)
+
+
+Started GET "/favorites" for ::1 at 2020-10-11 16:23:25 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (5.9ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 18ms (Views: 10.6ms | ActiveRecord: 5.9ms | Allocations: 1750)
+
+
