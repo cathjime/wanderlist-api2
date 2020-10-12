@@ -6,18 +6,27 @@ class FavoritesController < ApplicationController
         end
 
         def show
-            
+            favorite = Favorite.find(params[:id])
+            render json:favorite
         end
-        
+
         def create
             favorite= Favorite.create(favorite_params)
             render json:favorite
         end
+        
         def update
             favorite = Favorite.find(params[:id])
             favorite.update(favorite_params)
             render json:favorite
         end
+
+        def destroy
+            favorite = Favorite.find(params[:id])
+            favorite.delete
+            render json:favorite
+        end
+       
       
         private
         def favorite_params
