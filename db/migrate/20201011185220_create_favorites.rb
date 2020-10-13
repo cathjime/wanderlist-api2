@@ -7,7 +7,6 @@ class CreateFavorites < ActiveRecord::Migration[6.0]
       t.string :city
       t.float :latitude
       t.float :longitude
-      t.string :hours
       t.text :notes
       t.string :price
       t.integer :rating

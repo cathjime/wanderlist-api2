@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_10_11_185220) do
     t.string "city"
     t.float "latitude"
     t.float "longitude"
-    t.string "hours"
     t.text "notes"
     t.string "price"
     t.integer "rating"
