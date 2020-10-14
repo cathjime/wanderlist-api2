@@ -6222,3 +6222,155 @@ Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 1.0ms | Allocations: 333
 >>>>>>> d237a37df15a22085ca45ea370456112c7819c7d
 
 
+Started POST "/favorites" for ::1 at 2020-10-14 10:51:30 -0400
+  [1m[35m (19.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/UmYN2jeTgK62J6b0_wj4Ww/o.jpg", "name"=>"Tilt Coffee Bar", "address"=>"334 S Main St", "city"=>"Los Angeles", "longitude"=>-118.246295170034, "latitude"=>34.048162858309, "notes"=>"note", "price"=>"$", "rating"=>5, "yelp_id"=>"z3xjbZAQG8CpBd0Pul_WGQ", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/UmYN2jeTgK62J6b0_wj4Ww/o.jpg", "name"=>"Tilt Coffee Bar", "address"=>"334 S Main St", "city"=>"Los Angeles", "latitude"=>34.048162858309, "longitude"=>-118.246295170034, "notes"=>"note", "price"=>"$", "rating"=>5, "yelp_id"=>"z3xjbZAQG8CpBd0Pul_WGQ", "user_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (41.9ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media3.fl.yelpcdn.com/bphoto/UmYN2jeTgK62J6b0_wj4Ww/o.jpg"], ["name", "Tilt Coffee Bar"], ["address", "334 S Main St"], ["city", "Los Angeles"], ["latitude", 34.048162858309], ["longitude", -118.246295170034], ["notes", "note"], ["price", "$"], ["rating", 5], ["yelp_id", "z3xjbZAQG8CpBd0Pul_WGQ"], ["user_id", 1], ["created_at", "2020-10-14 14:51:30.855469"], ["updated_at", "2020-10-14 14:51:30.855469"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (28.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+Completed 200 OK in 180ms (Views: 1.0ms | ActiveRecord: 148.7ms | Allocations: 21982)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:33 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (55.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 64ms (Views: 8.2ms | ActiveRecord: 55.7ms | Allocations: 3397)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:43 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.4ms | Allocations: 3348)
+
+
+Started PATCH "/favorites/34" for ::1 at 2020-10-14 10:51:51 -0400
+Processing by FavoritesController#update as */*
+  Parameters: {"notes"=>"Great coffee!", "id"=>"34", "favorite"=>{"notes"=>"Great coffee!"}}
+  [1m[36mFavorite Load (0.6ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:19:in `update'
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mFavorite Update (19.4ms)[0m  [1m[33mUPDATE "favorites" SET "notes" = $1, "updated_at" = $2 WHERE "favorites"."id" = $3[0m  [["notes", "Great coffee!"], ["updated_at", "2020-10-14 14:51:51.161928"], ["id", 34]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+Completed 200 OK in 62ms (Views: 0.9ms | ActiveRecord: 41.1ms | Allocations: 4752)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:55 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (6.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 25ms (Views: 18.1ms | ActiveRecord: 6.8ms | Allocations: 3348)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:58 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 3330)
+
+
+Started DELETE "/favorites/34" for ::1 at 2020-10-14 10:52:00 -0400
+Processing by FavoritesController#destroy as */*
+  Parameters: {"id"=>"34", "favorite"=>{}}
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:25:in `destroy'
+  [1m[36mFavorite Destroy (10.5ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = $1[0m  [["id", 34]]
+  ↳ app/controllers/favorites_controller.rb:26:in `destroy'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 10.8ms | Allocations: 1310)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:52:03 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.5ms | Allocations: 3101)
+
+
+Started POST "/favorites" for ::1 at 2020-10-14 10:56:46 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/T2KlxT1dWqFGobZ9ukXyaQ/o.jpg", "name"=>"G&B Coffee", "address"=>"317 S Broadway", "city"=>"Los Angeles", "longitude"=>-118.249411, "latitude"=>34.051098, "notes"=>"note", "price"=>"$$", "rating"=>4, "yelp_id"=>"iOIbvIbzqs6iVUOqP0oC5g", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/T2KlxT1dWqFGobZ9ukXyaQ/o.jpg", "name"=>"G&B Coffee", "address"=>"317 S Broadway", "city"=>"Los Angeles", "latitude"=>34.051098, "longitude"=>-118.249411, "notes"=>"note", "price"=>"$$", "rating"=>4, "yelp_id"=>"iOIbvIbzqs6iVUOqP0oC5g", "user_id"=>1}}
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (30.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (34.1ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media3.fl.yelpcdn.com/bphoto/T2KlxT1dWqFGobZ9ukXyaQ/o.jpg"], ["name", "G&B Coffee"], ["address", "317 S Broadway"], ["city", "Los Angeles"], ["latitude", 34.051098], ["longitude", -118.249411], ["notes", "note"], ["price", "$$"], ["rating", 4], ["yelp_id", "iOIbvIbzqs6iVUOqP0oC5g"], ["user_id", 1], ["created_at", "2020-10-14 14:56:47.195139"], ["updated_at", "2020-10-14 14:56:47.195139"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (14.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+Completed 200 OK in 409ms (Views: 4.2ms | ActiveRecord: 80.4ms | Allocations: 4164)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:56:51 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 2.4ms | Allocations: 3336)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:00 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (70.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 452ms (Views: 380.8ms | ActiveRecord: 70.5ms | Allocations: 3339)
+
+
+Started PATCH "/favorites/35" for ::1 at 2020-10-14 10:57:19 -0400
+Processing by FavoritesController#update as */*
+  Parameters: {"notes"=>"Great coffee!", "id"=>"35", "favorite"=>{"notes"=>"Great coffee!"}}
+  [1m[36mFavorite Load (1.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:19:in `update'
+  [1m[35m (23.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mUser Load (19.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mFavorite Update (14.3ms)[0m  [1m[33mUPDATE "favorites" SET "notes" = $1, "updated_at" = $2 WHERE "favorites"."id" = $3[0m  [["notes", "Great coffee!"], ["updated_at", "2020-10-14 14:57:19.730993"], ["id", 35]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[35m (33.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+Completed 200 OK in 101ms (Views: 0.5ms | ActiveRecord: 91.5ms | Allocations: 4588)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:23 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (109.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 133ms (Views: 23.3ms | ActiveRecord: 109.3ms | Allocations: 3336)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:24 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (132.9ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 166ms (Views: 31.2ms | ActiveRecord: 132.9ms | Allocations: 3340)
+
+
+Started DELETE "/favorites/35" for ::1 at 2020-10-14 10:57:31 -0400
+Processing by FavoritesController#destroy as */*
+  Parameters: {"id"=>"35", "favorite"=>{}}
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:25:in `destroy'
+  [1m[36mFavorite Destroy (28.0ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = $1[0m  [["id", 35]]
+  ↳ app/controllers/favorites_controller.rb:26:in `destroy'
+Completed 200 OK in 31ms (Views: 0.5ms | ActiveRecord: 28.3ms | Allocations: 1304)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:41 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (102.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 133ms (Views: 30.1ms | ActiveRecord: 102.8ms | Allocations: 3101)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
