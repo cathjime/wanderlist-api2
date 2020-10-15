@@ -6222,3 +6222,752 @@ Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 1.0ms | Allocations: 333
 >>>>>>> d237a37df15a22085ca45ea370456112c7819c7d
 
 
+Started POST "/favorites" for ::1 at 2020-10-14 10:51:30 -0400
+  [1m[35m (19.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/UmYN2jeTgK62J6b0_wj4Ww/o.jpg", "name"=>"Tilt Coffee Bar", "address"=>"334 S Main St", "city"=>"Los Angeles", "longitude"=>-118.246295170034, "latitude"=>34.048162858309, "notes"=>"note", "price"=>"$", "rating"=>5, "yelp_id"=>"z3xjbZAQG8CpBd0Pul_WGQ", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/UmYN2jeTgK62J6b0_wj4Ww/o.jpg", "name"=>"Tilt Coffee Bar", "address"=>"334 S Main St", "city"=>"Los Angeles", "latitude"=>34.048162858309, "longitude"=>-118.246295170034, "notes"=>"note", "price"=>"$", "rating"=>5, "yelp_id"=>"z3xjbZAQG8CpBd0Pul_WGQ", "user_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (41.9ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media3.fl.yelpcdn.com/bphoto/UmYN2jeTgK62J6b0_wj4Ww/o.jpg"], ["name", "Tilt Coffee Bar"], ["address", "334 S Main St"], ["city", "Los Angeles"], ["latitude", 34.048162858309], ["longitude", -118.246295170034], ["notes", "note"], ["price", "$"], ["rating", 5], ["yelp_id", "z3xjbZAQG8CpBd0Pul_WGQ"], ["user_id", 1], ["created_at", "2020-10-14 14:51:30.855469"], ["updated_at", "2020-10-14 14:51:30.855469"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (28.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+Completed 200 OK in 180ms (Views: 1.0ms | ActiveRecord: 148.7ms | Allocations: 21982)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:33 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (55.7ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 64ms (Views: 8.2ms | ActiveRecord: 55.7ms | Allocations: 3397)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:43 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.4ms | Allocations: 3348)
+
+
+Started PATCH "/favorites/34" for ::1 at 2020-10-14 10:51:51 -0400
+Processing by FavoritesController#update as */*
+  Parameters: {"notes"=>"Great coffee!", "id"=>"34", "favorite"=>{"notes"=>"Great coffee!"}}
+  [1m[36mFavorite Load (0.6ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:19:in `update'
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mFavorite Update (19.4ms)[0m  [1m[33mUPDATE "favorites" SET "notes" = $1, "updated_at" = $2 WHERE "favorites"."id" = $3[0m  [["notes", "Great coffee!"], ["updated_at", "2020-10-14 14:51:51.161928"], ["id", 34]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+Completed 200 OK in 62ms (Views: 0.9ms | ActiveRecord: 41.1ms | Allocations: 4752)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:55 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (6.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 25ms (Views: 18.1ms | ActiveRecord: 6.8ms | Allocations: 3348)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:51:58 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 3330)
+
+
+Started DELETE "/favorites/34" for ::1 at 2020-10-14 10:52:00 -0400
+Processing by FavoritesController#destroy as */*
+  Parameters: {"id"=>"34", "favorite"=>{}}
+  [1m[36mFavorite Load (0.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:25:in `destroy'
+  [1m[36mFavorite Destroy (10.5ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = $1[0m  [["id", 34]]
+  ↳ app/controllers/favorites_controller.rb:26:in `destroy'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 10.8ms | Allocations: 1310)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:52:03 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.5ms | Allocations: 3101)
+
+
+Started POST "/favorites" for ::1 at 2020-10-14 10:56:46 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/T2KlxT1dWqFGobZ9ukXyaQ/o.jpg", "name"=>"G&B Coffee", "address"=>"317 S Broadway", "city"=>"Los Angeles", "longitude"=>-118.249411, "latitude"=>34.051098, "notes"=>"note", "price"=>"$$", "rating"=>4, "yelp_id"=>"iOIbvIbzqs6iVUOqP0oC5g", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/T2KlxT1dWqFGobZ9ukXyaQ/o.jpg", "name"=>"G&B Coffee", "address"=>"317 S Broadway", "city"=>"Los Angeles", "latitude"=>34.051098, "longitude"=>-118.249411, "notes"=>"note", "price"=>"$$", "rating"=>4, "yelp_id"=>"iOIbvIbzqs6iVUOqP0oC5g", "user_id"=>1}}
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (30.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (34.1ms)[0m  [1m[32mINSERT INTO "favorites" ("image", "name", "address", "city", "latitude", "longitude", "notes", "price", "rating", "yelp_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["image", "https://s3-media3.fl.yelpcdn.com/bphoto/T2KlxT1dWqFGobZ9ukXyaQ/o.jpg"], ["name", "G&B Coffee"], ["address", "317 S Broadway"], ["city", "Los Angeles"], ["latitude", 34.051098], ["longitude", -118.249411], ["notes", "note"], ["price", "$$"], ["rating", 4], ["yelp_id", "iOIbvIbzqs6iVUOqP0oC5g"], ["user_id", 1], ["created_at", "2020-10-14 14:56:47.195139"], ["updated_at", "2020-10-14 14:56:47.195139"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (14.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+Completed 200 OK in 409ms (Views: 4.2ms | ActiveRecord: 80.4ms | Allocations: 4164)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:56:51 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (2.4ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 2.4ms | Allocations: 3336)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:00 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (70.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 452ms (Views: 380.8ms | ActiveRecord: 70.5ms | Allocations: 3339)
+
+
+Started PATCH "/favorites/35" for ::1 at 2020-10-14 10:57:19 -0400
+Processing by FavoritesController#update as */*
+  Parameters: {"notes"=>"Great coffee!", "id"=>"35", "favorite"=>{"notes"=>"Great coffee!"}}
+  [1m[36mFavorite Load (1.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:19:in `update'
+  [1m[35m (23.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mUser Load (19.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[36mFavorite Update (14.3ms)[0m  [1m[33mUPDATE "favorites" SET "notes" = $1, "updated_at" = $2 WHERE "favorites"."id" = $3[0m  [["notes", "Great coffee!"], ["updated_at", "2020-10-14 14:57:19.730993"], ["id", 35]]
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+  [1m[35m (33.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:20:in `update'
+Completed 200 OK in 101ms (Views: 0.5ms | ActiveRecord: 91.5ms | Allocations: 4588)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:23 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (109.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 133ms (Views: 23.3ms | ActiveRecord: 109.3ms | Allocations: 3336)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:24 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (132.9ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 166ms (Views: 31.2ms | ActiveRecord: 132.9ms | Allocations: 3340)
+
+
+Started DELETE "/favorites/35" for ::1 at 2020-10-14 10:57:31 -0400
+Processing by FavoritesController#destroy as */*
+  Parameters: {"id"=>"35", "favorite"=>{}}
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:25:in `destroy'
+  [1m[36mFavorite Destroy (28.0ms)[0m  [1m[31mDELETE FROM "favorites" WHERE "favorites"."id" = $1[0m  [["id", 35]]
+  ↳ app/controllers/favorites_controller.rb:26:in `destroy'
+Completed 200 OK in 31ms (Views: 0.5ms | ActiveRecord: 28.3ms | Allocations: 1304)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 10:57:41 -0400
+Processing by FavoritesController#index as */*
+  [1m[36mFavorite Load (102.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites"[0m
+  ↳ app/controllers/favorites_controller.rb:5:in `index'
+Completed 200 OK in 133ms (Views: 30.1ms | ActiveRecord: 102.8ms | Allocations: 3101)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/users" for ::1 at 2020-10-14 13:03:00 -0400
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 42ms (Views: 15.1ms | ActiveRecord: 12.8ms | Allocations: 8953)
+
+
+Started GET "/users" for ::1 at 2020-10-14 13:03:25 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1211)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 13:45:25 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 131)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 13:46:11 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 13:54:01 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 11ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 14:01:04 -0400
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 15:04:04 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 110)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 15:07:23 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/users" for ::1 at 2020-10-14 15:52:03 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (27.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 293ms (Views: 100.7ms | ActiveRecord: 99.9ms | Allocations: 8911)
+
+
+Started GET "/users" for ::1 at 2020-10-14 15:52:46 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 13ms (Views: 5.9ms | ActiveRecord: 5.5ms | Allocations: 1211)
+
+
+Started GET "/users" for ::1 at 2020-10-14 15:53:59 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 1211)
+
+
+Started POST "/users" for ::1 at 2020-10-14 16:33:12 -0400
+  [1m[35m (17.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Dolly", "username"=>"dollywood", "password_digest"=>"[FILTERED]", "email"=>"dolly@email.com", "city"=>"Brooklyn", "user"=>{"name"=>"Dolly", "username"=>"dollywood", "password_digest"=>"[FILTERED]", "email"=>"dolly@email.com", "city"=>"Brooklyn"}}
+[31mUnpermitted parameters: :password_digest, :city[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 9.2ms | Allocations: 10025)
+
+
+Started GET "/users" for ::1 at 2020-10-14 16:34:31 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 52ms (Views: 26.7ms | ActiveRecord: 20.8ms | Allocations: 8078)
+
+
+Started GET "/users" for ::1 at 2020-10-14 16:34:34 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 6.4ms | Allocations: 1211)
+
+
+Started GET "/users" for ::1 at 2020-10-14 16:34:59 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 1.1ms | Allocations: 1212)
+
+
+Started POST "/users" for ::1 at 2020-10-14 16:36:37 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Daniel", "username"=>"dcr", "password_digest"=>"[FILTERED]", "email"=>"daniel@email.com", "city"=>"Brooklyn", "user"=>{"name"=>"Daniel", "username"=>"dcr", "password_digest"=>"[FILTERED]", "email"=>"daniel@email.com", "city"=>"Brooklyn"}}
+[31mUnpermitted parameter: :password_digest[0m
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1219)
+
+
+Started GET "/users" for ::1 at 2020-10-14 16:36:41 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 1194)
+
+
+Started POST "/users" for ::1 at 2020-10-14 18:30:16 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"", "username"=>"", "password_digest"=>"[FILTERED]", "email"=>"", "city"=>"", "user"=>{"name"=>"", "username"=>"", "password_digest"=>"[FILTERED]", "email"=>"", "city"=>""}}
+[31mUnpermitted parameter: :password_digest[0m
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 6572)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 18:30:44 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 130)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 18:40:25 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 18:50:30 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 1.6ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/users" for ::1 at 2020-10-14 18:59:58 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Sammy", "username"=>"sammy", "password_digest"=>"[FILTERED]", "email"=>"sammy@email.com", "city"=>"New York", "user"=>{"name"=>"Sammy", "username"=>"sammy", "password_digest"=>"[FILTERED]", "email"=>"sammy@email.com", "city"=>"New York"}}
+[31mUnpermitted parameter: :password_digest[0m
+Completed 200 OK in 17ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 1100)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 19:19:06 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 19:25:24 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 19:27:39 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 19:32:19 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 20:00:17 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/favorites" for ::1 at 2020-10-14 20:06:22 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/1tJvrLJiub1wzPAKmokDpg/o.jpg", "name"=>"The Donut Man", "address"=>"317 S Bdwy", "city"=>"Los Angeles", "longitude"=>-118.249108, "latitude"=>34.051081, "notes"=>"note", "rating"=>4, "yelp_id"=>"FLETQt9SqaFYudE8_PTBQw", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/1tJvrLJiub1wzPAKmokDpg/o.jpg", "name"=>"The Donut Man", "address"=>"317 S Bdwy", "city"=>"Los Angeles", "latitude"=>34.051081, "longitude"=>-118.249108, "notes"=>"note", "rating"=>4, "yelp_id"=>"FLETQt9SqaFYudE8_PTBQw", "user_id"=>1}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.4ms | ActiveRecord: 67.7ms | Allocations: 110)
+
+
+Started GET "/favorites" for ::1 at 2020-10-14 20:06:33 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:11:53 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"", "username"=>"", "password_digest"=>"[FILTERED]", "email"=>"", "city"=>"", "user"=>{"name"=>"", "username"=>"", "password_digest"=>"[FILTERED]", "email"=>"", "city"=>""}}
+[31mUnpermitted parameter: :password_digest[0m
+Completed 200 OK in 32ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 1098)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:14:32 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"fifi", "username"=>"fifi", "password_digest"=>"[FILTERED]", "email"=>"fifi@email.com", "city"=>"brooklyn", "user"=>{"name"=>"fifi", "username"=>"fifi", "password_digest"=>"[FILTERED]", "email"=>"fifi@email.com", "city"=>"brooklyn"}}
+[31mUnpermitted parameter: :password_digest[0m
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1108)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:16:28 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Corey", "username"=>"corey", "password_digest"=>"[FILTERED]", "email"=>"corey@email.com", "city"=>"Amsterdam", "user"=>{"name"=>"Corey", "username"=>"corey", "password_digest"=>"[FILTERED]", "email"=>"corey@email.com", "city"=>"Amsterdam"}}
+  [1m[35m (5.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (160.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Corey"], ["username", "corey"], ["password_digest", "pw123"], ["email", "corey@email.com"], ["city", "Amsterdam"], ["created_at", "2020-10-15 00:16:29.428733"], ["updated_at", "2020-10-15 00:16:29.428733"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (28.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 442ms (Views: 6.9ms | ActiveRecord: 252.0ms | Allocations: 8504)
+
+
+Started GET "/users" for ::1 at 2020-10-14 20:16:53 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (37.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 48ms (Views: 9.0ms | ActiveRecord: 37.9ms | Allocations: 1409)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:21:12 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"CodyC", "username"=>"cody", "password_digest"=>"[FILTERED]", "email"=>"cody@email.com", "city"=>"Brooklyn", "user"=>{"name"=>"CodyC", "username"=>"cody", "password_digest"=>"[FILTERED]", "email"=>"cody@email.com", "city"=>"Brooklyn"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "CodyC"], ["username", "cody"], ["password_digest", "secretpw"], ["email", "cody@email.com"], ["city", "Brooklyn"], ["created_at", "2020-10-15 00:21:12.625107"], ["updated_at", "2020-10-15 00:21:12.625107"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 36ms (Views: 5.2ms | ActiveRecord: 3.2ms | Allocations: 2860)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:23:08 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"fakeusER", "username"=>"fake", "password_digest"=>"[FILTERED]", "email"=>"fakeemail", "city"=>"New York", "user"=>{"name"=>"fakeusER", "username"=>"fake", "password_digest"=>"[FILTERED]", "email"=>"fakeemail", "city"=>"New York"}}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "fakeusER"], ["username", "fake"], ["password_digest", "test"], ["email", "fakeemail"], ["city", "New York"], ["created_at", "2020-10-15 00:23:08.984034"], ["updated_at", "2020-10-15 00:23:08.984034"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 23ms (Views: 1.4ms | ActiveRecord: 7.6ms | Allocations: 2862)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:37:24 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Betty", "username"=>"betty", "password_digest"=>"[FILTERED]", "email"=>"betty@email.com", "city"=>"San Francisco", "user"=>{"name"=>"Betty", "username"=>"betty", "password_digest"=>"[FILTERED]", "email"=>"betty@email.com", "city"=>"San Francisco"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (4.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Betty"], ["username", "betty"], ["password_digest", "apples12"], ["email", "betty@email.com"], ["city", "San Francisco"], ["created_at", "2020-10-15 00:37:24.432056"], ["updated_at", "2020-10-15 00:37:24.432056"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 33ms (Views: 6.5ms | ActiveRecord: 6.5ms | Allocations: 2878)
+
+
+Started GET "/users" for ::1 at 2020-10-14 20:38:02 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (27.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 69ms (Views: 34.6ms | ActiveRecord: 27.0ms | Allocations: 1915)
+
+
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/users" for ::1 at 2020-10-14 20:47:05 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Mark", "username"=>"mark", "password_digest"=>"[FILTERED]", "email"=>"mark@email.com", "city"=>"Paris", "user"=>{"name"=>"Mark", "username"=>"mark", "password_digest"=>"[FILTERED]", "email"=>"mark@email.com", "city"=>"Paris"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Mark"], ["username", "mark"], ["password_digest", "test2"], ["email", "mark@email.com"], ["city", "Paris"], ["created_at", "2020-10-15 00:47:05.455156"], ["updated_at", "2020-10-15 00:47:05.455156"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 32ms (Views: 1.2ms | ActiveRecord: 11.1ms | Allocations: 2880)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:48:31 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"user", "username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"user@email.com", "city"=>"Boston", "user"=>{"name"=>"user", "username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"user@email.com", "city"=>"Boston"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "user"], ["username", "user1"], ["password_digest", "user"], ["email", "user@email.com"], ["city", "Boston"], ["created_at", "2020-10-15 00:48:31.571087"], ["updated_at", "2020-10-15 00:48:31.571087"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 33ms (Views: 2.7ms | ActiveRecord: 6.0ms | Allocations: 2860)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:50:09 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"kdhflkj", "username"=>"sdmfj", "password_digest"=>"[FILTERED]", "email"=>"sfs", "city"=>"asdf", "user"=>{"name"=>"kdhflkj", "username"=>"sdmfj", "password_digest"=>"[FILTERED]", "email"=>"sfs", "city"=>"asdf"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (11.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "kdhflkj"], ["username", "sdmfj"], ["password_digest", "dsfs"], ["email", "sfs"], ["city", "asdf"], ["created_at", "2020-10-15 00:50:09.865619"], ["updated_at", "2020-10-15 00:50:09.865619"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (16.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 75ms (Views: 4.4ms | ActiveRecord: 29.1ms | Allocations: 2860)
+
+
+Started POST "/users" for ::1 at 2020-10-14 20:50:56 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"ldf", "username"=>"asdf", "password_digest"=>"[FILTERED]", "email"=>"adfsd", "city"=>"gfg", "user"=>{"name"=>"ldf", "username"=>"asdf", "password_digest"=>"[FILTERED]", "email"=>"adfsd", "city"=>"gfg"}}
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (4.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "ldf"], ["username", "asdf"], ["password_digest", "asdf"], ["email", "adfsd"], ["city", "gfg"], ["created_at", "2020-10-15 00:50:56.748205"], ["updated_at", "2020-10-15 00:50:56.748205"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 191ms (Views: 0.4ms | ActiveRecord: 11.1ms | Allocations: 2864)
+
+
+Started GET "/users" for ::1 at 2020-10-14 20:51:05 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 14ms (Views: 6.1ms | ActiveRecord: 6.7ms | Allocations: 2595)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:20:05 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"user", "username"=>"user3", "password_digest"=>"[FILTERED]", "email"=>"user3@email.com", "city"=>"Boston", "user"=>{"name"=>"user", "username"=>"user3", "password_digest"=>"[FILTERED]", "email"=>"user3@email.com", "city"=>"Boston"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (3.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "user"], ["username", "user3"], ["password_digest", "test2"], ["email", "user3@email.com"], ["city", "Boston"], ["created_at", "2020-10-15 01:20:05.814689"], ["updated_at", "2020-10-15 01:20:05.814689"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 34ms (Views: 1.3ms | ActiveRecord: 10.6ms | Allocations: 2877)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:21:34 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"andy", "username"=>"andy", "password_digest"=>"[FILTERED]", "email"=>"andy@email.com", "city"=>"Miami", "user"=>{"name"=>"andy", "username"=>"andy", "password_digest"=>"[FILTERED]", "email"=>"andy@email.com", "city"=>"Miami"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "andy"], ["username", "andy"], ["password_digest", "andy"], ["email", "andy@email.com"], ["city", "Miami"], ["created_at", "2020-10-15 01:21:34.802823"], ["updated_at", "2020-10-15 01:21:34.802823"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 2860)
+
+
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/users" for ::1 at 2020-10-14 21:26:48 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 65ms (Views: 33.0ms | ActiveRecord: 18.3ms | Allocations: 9850)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:28:44 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Catherine", "username"=>"catherine", "password_digest"=>"[FILTERED]", "email"=>"catherine@email.com", "city"=>"Miami", "user"=>{"name"=>"Catherine", "username"=>"catherine", "password_digest"=>"[FILTERED]", "email"=>"catherine@email.com", "city"=>"Miami"}}
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (8.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Catherine"], ["username", "catherine"], ["password_digest", "cj"], ["email", "catherine@email.com"], ["city", "Miami"], ["created_at", "2020-10-15 01:28:44.885865"], ["updated_at", "2020-10-15 01:28:44.885865"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 40ms (Views: 0.8ms | ActiveRecord: 18.9ms | Allocations: 2991)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:31:59 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"test1", "username"=>"test2", "password_digest"=>"[FILTERED]", "email"=>"test3@email.com", "city"=>"portland", "user"=>{"name"=>"test1", "username"=>"test2", "password_digest"=>"[FILTERED]", "email"=>"test3@email.com", "city"=>"portland"}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "test1"], ["username", "test2"], ["password_digest", "pw"], ["email", "test3@email.com"], ["city", "portland"], ["created_at", "2020-10-15 01:31:59.427523"], ["updated_at", "2020-10-15 01:31:59.427523"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 47ms (Views: 3.9ms | ActiveRecord: 3.7ms | Allocations: 2864)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:33:38 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"abc", "username"=>"def", "password_digest"=>"[FILTERED]", "email"=>"abc", "city"=>"ksfk", "user"=>{"name"=>"abc", "username"=>"def", "password_digest"=>"[FILTERED]", "email"=>"abc", "city"=>"ksfk"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (13.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "abc"], ["username", "def"], ["password_digest", "adsfd"], ["email", "abc"], ["city", "ksfk"], ["created_at", "2020-10-15 01:33:38.918385"], ["updated_at", "2020-10-15 01:33:38.918385"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 36ms (Views: 0.7ms | ActiveRecord: 20.7ms | Allocations: 2867)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:39:40 -0400
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"big bird", "username"=>"bird", "password_digest"=>"[FILTERED]", "email"=>"bird@email.com", "city"=>"New York", "user"=>{"name"=>"big bird", "username"=>"bird", "password_digest"=>"[FILTERED]", "email"=>"bird@email.com", "city"=>"New York"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (10.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "big bird"], ["username", "bird"], ["password_digest", "flying"], ["email", "bird@email.com"], ["city", "New York"], ["created_at", "2020-10-15 01:39:40.401577"], ["updated_at", "2020-10-15 01:39:40.401577"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 45ms (Views: 0.3ms | ActiveRecord: 28.8ms | Allocations: 9034)
+
+
+Started GET "/users" for ::1 at 2020-10-14 21:40:25 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 1.4ms | Allocations: 3635)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:45:41 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"sdfsd", "username"=>"sdfsd", "password_digest"=>"[FILTERED]", "email"=>"sdfsd", "city"=>"sfsd", "user"=>{"name"=>"sdfsd", "username"=>"sdfsd", "password_digest"=>"[FILTERED]", "email"=>"sdfsd", "city"=>"sfsd"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (7.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "sdfsd"], ["username", "sdfsd"], ["password_digest", "sdfsd"], ["email", "sdfsd"], ["city", "sfsd"], ["created_at", "2020-10-15 01:45:41.631211"], ["updated_at", "2020-10-15 01:45:41.631211"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (34.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 60ms (Views: 0.3ms | ActiveRecord: 42.3ms | Allocations: 2879)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:51:25 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"apple", "username"=>"apple", "password_digest"=>"[FILTERED]", "email"=>"apple@email.com", "city"=>"New York", "user"=>{"name"=>"apple", "username"=>"apple", "password_digest"=>"[FILTERED]", "email"=>"apple@email.com", "city"=>"New York"}}
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "apple"], ["username", "apple"], ["password_digest", "apple"], ["email", "apple@email.com"], ["city", "New York"], ["created_at", "2020-10-15 01:51:26.088546"], ["updated_at", "2020-10-15 01:51:26.088546"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 249ms (Views: 1.3ms | ActiveRecord: 5.2ms | Allocations: 2879)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:53:57 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"cookies", "username"=>"cookies", "password_digest"=>"[FILTERED]", "email"=>"cookies@email.com", "city"=>"philadelphia", "user"=>{"name"=>"cookies", "username"=>"cookies", "password_digest"=>"[FILTERED]", "email"=>"cookies@email.com", "city"=>"philadelphia"}}
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (9.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "cookies"], ["username", "cookies"], ["password_digest", "chocolate chip"], ["email", "cookies@email.com"], ["city", "philadelphia"], ["created_at", "2020-10-15 01:53:57.816973"], ["updated_at", "2020-10-15 01:53:57.816973"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 48ms (Views: 0.2ms | ActiveRecord: 19.9ms | Allocations: 2879)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:55:39 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"kjshflksdj", "username"=>"asdfd", "password_digest"=>"[FILTERED]", "email"=>"fgfg", "city"=>"sere", "user"=>{"name"=>"kjshflksdj", "username"=>"asdfd", "password_digest"=>"[FILTERED]", "email"=>"fgfg", "city"=>"sere"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (3.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "kjshflksdj"], ["username", "asdfd"], ["password_digest", "asd"], ["email", "fgfg"], ["city", "sere"], ["created_at", "2020-10-15 01:55:39.617887"], ["updated_at", "2020-10-15 01:55:39.617887"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (52.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 219ms (Views: 29.6ms | ActiveRecord: 56.4ms | Allocations: 2869)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:57:39 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"dsfds", "username"=>"asdfd", "password_digest"=>"[FILTERED]", "email"=>"adfds", "city"=>"sdfsdf", "user"=>{"name"=>"dsfds", "username"=>"asdfd", "password_digest"=>"[FILTERED]", "email"=>"adfds", "city"=>"sdfsdf"}}
+  [1m[35m (23.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (50.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "dsfds"], ["username", "asdfd"], ["password_digest", "sdfsd"], ["email", "adfds"], ["city", "sdfsdf"], ["created_at", "2020-10-15 01:57:39.114076"], ["updated_at", "2020-10-15 01:57:39.114076"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 99ms (Views: 0.4ms | ActiveRecord: 78.3ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:59:07 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"asdfds", "username"=>"ghgh", "password_digest"=>"[FILTERED]", "email"=>"fghrtr", "city"=>"dfgdfg", "user"=>{"name"=>"asdfds", "username"=>"ghgh", "password_digest"=>"[FILTERED]", "email"=>"fghrtr", "city"=>"dfgdfg"}}
+  [1m[35m (4.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (5.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "asdfds"], ["username", "ghgh"], ["password_digest", "dfgdfg"], ["email", "fghrtr"], ["city", "dfgdfg"], ["created_at", "2020-10-15 01:59:07.357222"], ["updated_at", "2020-10-15 01:59:07.357222"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (47.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 74ms (Views: 0.2ms | ActiveRecord: 56.6ms | Allocations: 2862)
+
+
+Started POST "/users" for ::1 at 2020-10-14 21:59:40 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"sally", "username"=>"sfgd", "password_digest"=>"[FILTERED]", "email"=>"dfgdf", "city"=>"dfgdf", "user"=>{"name"=>"sally", "username"=>"sfgd", "password_digest"=>"[FILTERED]", "email"=>"dfgdf", "city"=>"dfgdf"}}
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (29.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "sally"], ["username", "sfgd"], ["password_digest", "dfgdf"], ["email", "dfgdf"], ["city", "dfgdf"], ["created_at", "2020-10-15 01:59:40.953133"], ["updated_at", "2020-10-15 01:59:40.953133"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (33.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 71ms (Views: 0.1ms | ActiveRecord: 65.0ms | Allocations: 2879)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:00:33 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"amy", "username"=>"amy", "password_digest"=>"[FILTERED]", "email"=>"any", "city"=>"amy", "user"=>{"name"=>"amy", "username"=>"amy", "password_digest"=>"[FILTERED]", "email"=>"any", "city"=>"amy"}}
+  [1m[35m (5.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (30.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "amy"], ["username", "amy"], ["password_digest", "amy"], ["email", "any"], ["city", "amy"], ["created_at", "2020-10-15 02:00:33.995630"], ["updated_at", "2020-10-15 02:00:33.995630"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (46.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 210ms (Views: 1.1ms | ActiveRecord: 81.4ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:03:25 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"", "username"=>"", "password_digest"=>"[FILTERED]", "email"=>"", "city"=>"", "user"=>{"name"=>"", "username"=>"", "password_digest"=>"[FILTERED]", "email"=>"", "city"=>""}}
+Completed 200 OK in 70ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2197)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:03:55 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"ernie", "username"=>"ernie", "password_digest"=>"[FILTERED]", "email"=>"ernie", "city"=>"ernie", "user"=>{"name"=>"ernie", "username"=>"ernie", "password_digest"=>"[FILTERED]", "email"=>"ernie", "city"=>"ernie"}}
+  [1m[35m (11.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "ernie"], ["username", "ernie"], ["password_digest", "ernie"], ["email", "ernie"], ["city", "ernie"], ["created_at", "2020-10-15 02:03:55.055036"], ["updated_at", "2020-10-15 02:03:55.055036"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (48.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 77ms (Views: 0.2ms | ActiveRecord: 60.7ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:04:59 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"bert", "username"=>"bert", "password_digest"=>"[FILTERED]", "email"=>"bert", "city"=>"bert", "user"=>{"name"=>"bert", "username"=>"bert", "password_digest"=>"[FILTERED]", "email"=>"bert", "city"=>"bert"}}
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (25.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "bert"], ["username", "bert"], ["password_digest", "bert"], ["email", "bert"], ["city", "bert"], ["created_at", "2020-10-15 02:04:59.847338"], ["updated_at", "2020-10-15 02:04:59.847338"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (37.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 104ms (Views: 5.1ms | ActiveRecord: 64.5ms | Allocations: 2863)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:05:51 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"icecream", "username"=>"iceream", "password_digest"=>"[FILTERED]", "email"=>"icecream", "city"=>"icecream", "user"=>{"name"=>"icecream", "username"=>"iceream", "password_digest"=>"[FILTERED]", "email"=>"icecream", "city"=>"icecream"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "icecream"], ["username", "iceream"], ["password_digest", "icecream"], ["email", "icecream"], ["city", "icecream"], ["created_at", "2020-10-15 02:05:51.009857"], ["updated_at", "2020-10-15 02:05:51.009857"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 4.7ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:07:55 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"noodles", "username"=>"noodles", "password_digest"=>"[FILTERED]", "email"=>"noodles", "city"=>"noodles", "user"=>{"name"=>"noodles", "username"=>"noodles", "password_digest"=>"[FILTERED]", "email"=>"noodles", "city"=>"noodles"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (23.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "noodles"], ["username", "noodles"], ["password_digest", "noodles"], ["email", "noodles"], ["city", "noodles"], ["created_at", "2020-10-15 02:07:55.169145"], ["updated_at", "2020-10-15 02:07:55.169145"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 37ms (Views: 0.2ms | ActiveRecord: 27.7ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:11:14 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"mark", "username"=>"mark", "password_digest"=>"[FILTERED]", "email"=>"mark", "city"=>"mark", "user"=>{"name"=>"mark", "username"=>"mark", "password_digest"=>"[FILTERED]", "email"=>"mark", "city"=>"mark"}}
+  [1m[35m (37.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (45.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "mark"], ["username", "mark"], ["password_digest", "mark"], ["email", "mark"], ["city", "mark"], ["created_at", "2020-10-15 02:11:14.546607"], ["updated_at", "2020-10-15 02:11:14.546607"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 144ms (Views: 0.8ms | ActiveRecord: 83.5ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:13:27 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"popcorn", "username"=>"popcorn", "password_digest"=>"[FILTERED]", "email"=>"popcorn", "city"=>"popcorn", "user"=>{"name"=>"popcorn", "username"=>"popcorn", "password_digest"=>"[FILTERED]", "email"=>"popcorn", "city"=>"popcorn"}}
+  [1m[35m (40.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (16.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "popcorn"], ["username", "popcorn"], ["password_digest", "popcorn"], ["email", "popcorn"], ["city", "popcorn"], ["created_at", "2020-10-15 02:13:27.056035"], ["updated_at", "2020-10-15 02:13:27.056035"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (85.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 163ms (Views: 0.2ms | ActiveRecord: 141.9ms | Allocations: 2861)
+
+
+Started POST "/users" for ::1 at 2020-10-14 22:16:17 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"kiwi", "username"=>"kiwki", "password_digest"=>"[FILTERED]", "email"=>"kiwi", "city"=>"kiwi", "user"=>{"name"=>"kiwi", "username"=>"kiwki", "password_digest"=>"[FILTERED]", "email"=>"kiwi", "city"=>"kiwi"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (9.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "kiwi"], ["username", "kiwki"], ["password_digest", "kiwi"], ["email", "kiwi"], ["city", "kiwi"], ["created_at", "2020-10-15 02:16:17.050001"], ["updated_at", "2020-10-15 02:16:17.050001"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 10.2ms | Allocations: 2861)
+
+
