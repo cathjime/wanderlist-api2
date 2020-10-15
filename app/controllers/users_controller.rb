@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     # REGISTER
     def create
         user = User.create(user_params)
+        # byebug
         if user.valid?
           token = encode_token({user_id: user.id})
           render json: {user: user, token: token}.to_json
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
     def login
         user = User.find_by(username: params[:username])
 
-        if user && user.authenticate(params[:passsword_digest])
+        if user && user.authenticate(params[:password])
             token = encode_token({user_id: user.id})
             render json: {user: user, token: token}
         else
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   
     private
     def user_params
-        params.require(:user).permit(:name, :username, :password_digest, :email, :image, :city)
+        params.permit(:name, :username, :password, :email, :image, :city)
     end 
 
 end

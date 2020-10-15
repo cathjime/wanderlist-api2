@@ -6971,3 +6971,269 @@ Processing by UsersController#create as JSON
 Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 10.2ms | Allocations: 2861)
 
 
+Started GET "/favorites" for ::1 at 2020-10-15 11:24:37 -0400
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users" for ::1 at 2020-10-15 11:34:05 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (16.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 83ms (Views: 26.2ms | ActiveRecord: 39.9ms | Allocations: 13843)
+
+
+Started GET "/users" for ::1 at 2020-10-15 11:34:08 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.4ms | Allocations: 6143)
+
+
+Started POST "/users" for ::1 at 2020-10-15 11:34:30 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Dolly", "username"=>"dollywood", "password_digest"=>"[FILTERED]", "email"=>"dollywood@email.com", "city"=>"Brooklyn", "user"=>{"name"=>"Dolly", "username"=>"dollywood", "password_digest"=>"[FILTERED]", "email"=>"dollywood@email.com", "city"=>"Brooklyn"}}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (8.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dolly"], ["username", "dollywood"], ["password_digest", "georgie"], ["email", "dollywood@email.com"], ["city", "Brooklyn"], ["created_at", "2020-10-15 15:34:30.715149"], ["updated_at", "2020-10-15 15:34:30.715149"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 25.1ms | Allocations: 3198)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 11:34:51 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/users" for ::1 at 2020-10-15 11:40:20 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 20ms (Views: 15.5ms | ActiveRecord: 0.9ms | Allocations: 6296)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 13:41:27 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 16ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 130)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 13:47:41 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 14:22:18 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 11ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 110)
+
+
+Started POST "/login" for ::1 at 2020-10-15 14:26:52 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"dollywood", "password"=>"[FILTERED]", "user"=>{"username"=>"dollywood"}}
+  [1m[36mUser Load (17.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dollywood"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `login'
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 17.9ms | Allocations: 6566)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/users_controller.rb:30:in `login'
+Started POST "/users" for ::1 at 2020-10-15 14:33:59 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"abc", "username"=>"abc", "password"=>"[FILTERED]", "email"=>"abc@email.com", "city"=>"Boston", "user"=>{"name"=>"abc", "username"=>"abc", "email"=>"abc@email.com", "city"=>"Boston"}}
+Completed 200 OK in 136ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 7586)
+
+
+Started GET "/users" for ::1 at 2020-10-15 14:34:05 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 52ms (Views: 45.1ms | ActiveRecord: 1.7ms | Allocations: 6377)
+
+
+Started GET "/users" for ::1 at 2020-10-15 14:34:11 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 65ms (Views: 62.3ms | ActiveRecord: 2.2ms | Allocations: 6297)
+
+
+Started POST "/users" for ::1 at 2020-10-15 14:36:08 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"ernie", "username"=>"ernie", "password"=>"[FILTERED]", "email"=>"ernie@email.com", "city"=>"sesame", "user"=>{"name"=>"ernie", "username"=>"ernie", "email"=>"ernie@email.com", "city"=>"sesame"}}
+Started GET "/users" for ::1 at 2020-10-15 14:40:29 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 131ms (Views: 60.6ms | ActiveRecord: 20.7ms | Allocations: 14009)
+
+
+Started POST "/users" for ::1 at 2020-10-15 14:40:56 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Oscar", "username"=>"oscar", "password"=>"[FILTERED]", "email"=>"oscar@email.com", "city"=>"Brooklyn", "user"=>{"name"=>"Oscar", "username"=>"oscar", "email"=>"oscar@email.com", "city"=>"Brooklyn"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[35m (17.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (222.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Oscar"], ["username", "oscar"], ["password_digest", "$2a$12$OhAKQNpnQgejD0dk/V2wD.SHZ62g3jWCyDw77ucc.QDyLNpXx2xKa"], ["email", "oscar@email.com"], ["city", "Brooklyn"], ["created_at", "2020-10-15 18:40:58.234377"], ["updated_at", "2020-10-15 18:40:58.234377"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 1658ms (Views: 0.1ms | ActiveRecord: 245.4ms | Allocations: 3256)
+
+
+Started GET "/users" for ::1 at 2020-10-15 14:41:12 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (40.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 57ms (Views: 16.7ms | ActiveRecord: 40.4ms | Allocations: 6466)
+
+
+Started POST "/login" for ::1 at 2020-10-15 14:42:21 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"oscar", "password"=>"[FILTERED]", "user"=>{"username"=>"oscar"}}
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "oscar"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 351ms (Views: 1.2ms | ActiveRecord: 9.4ms | Allocations: 2779)
+
+
+Started POST "/login" for ::1 at 2020-10-15 14:43:08 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"oscar", "password"=>"[FILTERED]", "user"=>{"username"=>"oscar"}}
+  [1m[36mUser Load (13.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "oscar"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 1224ms (Views: 0.6ms | ActiveRecord: 13.9ms | Allocations: 968)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 14:43:19 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 130)
+
+
+Started POST "/login" for ::1 at 2020-10-15 14:53:19 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"oscar", "password"=>"[FILTERED]", "user"=>{"username"=>"oscar"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "oscar"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 474ms (Views: 3.8ms | ActiveRecord: 1.7ms | Allocations: 1044)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 14:53:21 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/users" for ::1 at 2020-10-15 14:59:32 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Daniel", "username"=>"dcr", "password"=>"[FILTERED]", "email"=>"dcr@email.com", "city"=>"Brooklyn", "user"=>{"name"=>"Daniel", "username"=>"dcr", "email"=>"dcr@email.com", "city"=>"Brooklyn"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "email", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Daniel"], ["username", "dcr"], ["password_digest", "$2a$12$3FVogyLnOGDCyI80E1.AdOA9kamiTfDmX3ucpdMoJVk5GdNask2eK"], ["email", "dcr@email.com"], ["city", "Brooklyn"], ["created_at", "2020-10-15 18:59:32.879168"], ["updated_at", "2020-10-15 18:59:32.879168"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 494ms (Views: 0.7ms | ActiveRecord: 2.9ms | Allocations: 2936)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 14:59:35 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/login" for ::1 at 2020-10-15 14:59:47 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"dcr", "password"=>"[FILTERED]", "user"=>{"username"=>"dcr"}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dcr"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 402ms (Views: 0.6ms | ActiveRecord: 2.5ms | Allocations: 1017)
+
+
+Started GET "/users" for ::1 at 2020-10-15 14:59:56 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 6639)
+
+
+Started POST "/login" for ::1 at 2020-10-15 15:03:52 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"dcr", "password"=>"[FILTERED]", "user"=>{"username"=>"dcr"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dcr"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 498ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 947)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 15:03:53 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/login" for ::1 at 2020-10-15 15:06:04 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"dcr", "password"=>"[FILTERED]", "user"=>{"username"=>"dcr"}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dcr"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 297ms (Views: 3.6ms | ActiveRecord: 2.0ms | Allocations: 947)
+
+
+Started POST "/favorites" for ::1 at 2020-10-15 15:06:23 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/h1IcL76HrD1s9h1vctGlFQ/o.jpg", "name"=>"DTLA SWEETS", "address"=>"833 S Central Ave", "city"=>"Los Angeles", "longitude"=>-118.2442108, "latitude"=>34.0327924, "notes"=>"note", "rating"=>4, "yelp_id"=>"35ecreO8Orb1Q3pDxuoROQ", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media3.fl.yelpcdn.com/bphoto/h1IcL76HrD1s9h1vctGlFQ/o.jpg", "name"=>"DTLA SWEETS", "address"=>"833 S Central Ave", "city"=>"Los Angeles", "latitude"=>34.0327924, "longitude"=>-118.2442108, "notes"=>"note", "rating"=>4, "yelp_id"=>"35ecreO8Orb1Q3pDxuoROQ", "user_id"=>1}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 22.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 15:06:26 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started POST "/login" for ::1 at 2020-10-15 15:07:56 -0400
+Processing by UsersController#login as JSON
+  Parameters: {"username"=>"dcr", "password"=>"[FILTERED]", "user"=>{"username"=>"dcr"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dcr"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `login'
+Completed 200 OK in 561ms (Views: 7.1ms | ActiveRecord: 0.8ms | Allocations: 948)
+
+
+Started POST "/favorites" for ::1 at 2020-10-15 15:08:30 -0400
+Processing by FavoritesController#create as */*
+  Parameters: {"image"=>"https://s3-media4.fl.yelpcdn.com/bphoto/z9gfVrZESgokFRXwkASofA/o.jpg", "name"=>"No Ghost Bears", "address"=>"305 E 8th St", "city"=>"Los Angeles", "longitude"=>-118.251420971164, "latitude"=>34.041442776373, "notes"=>"note", "price"=>"$", "rating"=>4.5, "yelp_id"=>"RGNxKOYPCA2exB2zYKqa7w", "user_id"=>1, "favorite"=>{"image"=>"https://s3-media4.fl.yelpcdn.com/bphoto/z9gfVrZESgokFRXwkASofA/o.jpg", "name"=>"No Ghost Bears", "address"=>"305 E 8th St", "city"=>"Los Angeles", "latitude"=>34.041442776373, "longitude"=>-118.251420971164, "notes"=>"note", "price"=>"$", "rating"=>4.5, "yelp_id"=>"RGNxKOYPCA2exB2zYKqa7w", "user_id"=>1}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 15:08:33 -0400
+Processing by FavoritesController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started GET "/" for ::1 at 2020-10-15 15:08:57 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/catherinejimenez/.rvm/gems/ruby-2.6.1/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/catherinejimenez/.rvm/gems/ruby-2.6.1/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.5ms | Allocations: 480)
+Completed 200 OK in 36ms (Views: 21.6ms | ActiveRecord: 0.0ms | Allocations: 2624)
+
+
+Started GET "/favorites" for ::1 at 2020-10-15 15:09:03 -0400
+Processing by FavoritesController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
