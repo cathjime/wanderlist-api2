@@ -11,9 +11,9 @@ class UsersController < ApplicationController
         user = User.create(user_params)
         if user.valid?
           token = encode_token({user_id: user.id})
-          render json: {user: user, token: token}
+          render json: {user: user, token: token}.to_json
         else
-          render json: {error: "Invalid username or password"}
+          render json: {error: "Invalid username or password"}.to_json
         end
     end
 
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   
     private
     def user_params
-        params.require(:user).permit(:name, :username, :passsword_digest, :email, :image)
+        params.require(:user).permit(:name, :username, :password_digest, :email, :image, :city)
     end 
 
 end
